@@ -1,4 +1,4 @@
-// app/index.js
+// app/index.js basic server version
 const http = require("http");
 
 const server = http.createServer((req, res) => {
