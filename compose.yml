@@ -1,6 +1,6 @@
 services:
   app:
-    image: jenmchiang/docker-demo:v2
+    image: jenmchiang/docker-demo:v2.1
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,9 +10,11 @@ services:
       - DATABASE_URL=postgres://user:password@db:5432/messages
     depends_on:
       - db
-    # volumes:
-    #   - ./app:/app
-    # command: sh -c "npm install && npm start"
+    volumes:
+      # stores local app into the app dir in container
+      - ./app:/app
+    # run command inside container to capture dependencies
+    command: sh -c "npm install && npm start"
     # networks:
     #   - appnet
 
