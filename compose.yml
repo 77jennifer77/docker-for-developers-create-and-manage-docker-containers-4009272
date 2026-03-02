@@ -1,6 +1,6 @@
 services:
   app:
-    image: sbenhoff/docker-demo:v2
+    image: jenmchiang/docker-demo:v2
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,15 +10,16 @@ services:
       - DATABASE_URL=postgres://user:password@db:5432/messages
     depends_on:
       - db
-    volumes:
-      - ./app:/app
-    command: sh -c "npm install && npm start"
+    # volumes:
+    #   - ./app:/app
+    # command: sh -c "npm install && npm start"
     # networks:
     #   - appnet
 
   db:
     image: postgres:15-alpine
     environment:
+      # the following would typically be in .env files
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: messages
