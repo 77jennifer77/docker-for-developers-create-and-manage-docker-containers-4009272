@@ -4,6 +4,7 @@ metadata:
   labels:
     io.kompose.service: pgdata
   name: pgdata
+  namespace: myapp
 spec:
   accessModes:
     - ReadWriteOnce
