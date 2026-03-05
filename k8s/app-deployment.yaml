@@ -2,12 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: C:\Users\WaltS\AppData\Local\Microsoft\WinGet\Packages\Kubernetes.kompose_Microsoft.Winget.Source_8wekyb3d8bbwe\kompose.exe convert
-    kompose.version: 1.35.0 (9532ceef3)
+    kompose.cmd: kompose convert
+    kompose.version: 1.38.0 (HEAD)
   labels:
     io.kompose.service: app
   name: app
-  namespace: myapp
 spec:
   replicas: 1
   selector:
@@ -16,8 +15,8 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: C:\Users\WaltS\AppData\Local\Microsoft\WinGet\Packages\Kubernetes.kompose_Microsoft.Winget.Source_8wekyb3d8bbwe\kompose.exe convert
-        kompose.version: 1.35.0 (9532ceef3)
+        kompose.cmd: kompose convert
+        kompose.version: 1.38.0 (HEAD)
       labels:
         io.kompose.service: app
     spec:
@@ -25,7 +24,7 @@ spec:
         - env:
             - name: DATABASE_URL
               value: postgres://user:password@db:5432/messages
-          image: sbenhoff/docker-demo:v3
+          image: sbenhoff/docker-demo:v2
           name: app
           ports:
             - containerPort: 3000
