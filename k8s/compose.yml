@@ -1,6 +1,6 @@
 services:
   app:
-    image: jmchaing/docker-demo:v2
+    image: jmchiang/docker-demo:v2
     build:
       context: .
       dockerfile: Dockerfile
