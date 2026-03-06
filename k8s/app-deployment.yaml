@@ -9,7 +9,7 @@ metadata:
   name: app
   namespace: myapp
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       io.kompose.service: app
@@ -25,7 +25,7 @@ spec:
         - env:
             - name: DATABASE_URL
               value: postgres://user:password@db:5432/messages
-          image: jenmchiang/docker-demo:v3
+          image: jenmchiang/docker-demo:v4
           name: app
           ports:
             - containerPort: 3000
