@@ -1,11 +1,22 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { getMessage, setMessage, initDB } = require('./db');
+// app/index.js basic server version
+// const http = require("http");
+
+// const server = http.createServer((req, res) => {
+//   res.end("Hello from Docker!");
+// });
+
+// server.listen(3000, () => {
+//   console.log("Server listening on port 3000");
+// });
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const { getMessage, setMessage, initDB } = require("./db");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   const message = await getMessage();
   res.send(`
     <html>
@@ -20,18 +31,18 @@ app.get('/', async (req, res) => {
   `);
 });
 
-app.post('/update', async (req, res) => {
+app.post("/update", async (req, res) => {
   await setMessage(req.body.message);
-  res.redirect('/');
+  res.redirect("/");
 });
 
 initDB()
   .then(() => {
     app.listen(3000, () => {
-      console.log('Server listening on port 3000');
+      console.log("Server listening on port 3000");
     });
   })
-  .catch(err => {
-    console.error('Database initialization failed:', err);
+  .catch((err) => {
+    console.error("Database initialization failed:", err);
     process.exit(1);
   });
